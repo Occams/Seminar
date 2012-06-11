@@ -1,0 +1,121 @@
+% ----------------------------------------------------------------------------
+% ------------------------Bachelor Thesis
+% ----------------------------------------------------------------------------
+\documentclass[11pt]{beamer}
+\usepackage[english,ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[sc]{mathpazo}
+\linespread{1.05} 
+\usepackage{tikz,relsize,palatino,microtype,lipsum,csquotes,
+	enumerate,amssymb,fixltx2e}
+\usepackage[scaled=.9]{inconsolata}
+\usepackage{graphicx}
+
+% -----------------------------------------------------
+% ---------------- Package setup
+% -----------------------------------------------------
+%\hypersetup{pdfstartview={FitH}}
+\usetikzlibrary{shapes,positioning,decorations.pathmorphing,shadows}
+
+\definecolor{countryborder}{RGB}{0,184,46}
+\definecolor{countrycolor}{RGB}{51,255,102}
+\definecolor{clustercolor}{RGB}{51,102,255}
+
+
+% ------------------------------------------
+% -------- xcolor - (Tango)
+% ------------------------------------------
+
+\definecolor{LightButter}{rgb}{0.98,0.91,0.31}
+\definecolor{LightOrange}{rgb}{0.98,0.68,0.24}
+\definecolor{LightChocolate}{rgb}{0.91,0.72,0.43}
+\definecolor{LightChameleon}{rgb}{0.54,0.88,0.20}
+\definecolor{LightSkyBlue}{rgb}{0.45,0.62,0.81}
+\definecolor{LightPlum}{rgb}{0.68,0.50,0.66}
+\definecolor{LightScarletRed}{rgb}{0.93,0.16,0.16}
+\definecolor{Butter}{rgb}{0.93,0.86,0.25}
+\definecolor{Orange}{rgb}{0.96,0.47,0.00}
+\definecolor{Chocolate}{rgb}{0.75,0.49,0.07}
+\definecolor{Chameleon}{rgb}{0.45,0.82,0.09}
+\definecolor{SkyBlue}{rgb}{0.20,0.39,0.64}
+\definecolor{Plum}{rgb}{0.46,0.31,0.48}
+\definecolor{ScarletRed}{rgb}{0.80,0.00,0.00}
+\definecolor{DarkButter}{rgb}{0.77,0.62,0.00}
+\definecolor{DarkOrange}{rgb}{0.80,0.36,0.00}
+\definecolor{DarkChocolate}{rgb}{0.56,0.35,0.01}
+\definecolor{DarkChameleon}{rgb}{0.30,0.60,0.02}
+\definecolor{DarkSkyBlue}{rgb}{0.12,0.29,0.53}
+\definecolor{DarkPlum}{rgb}{0.36,0.21,0.40}
+\definecolor{DarkScarletRed}{rgb}{0.64,0.00,0.00}
+\definecolor{Aluminium1}{rgb}{0.93,0.93,0.92}
+\definecolor{Aluminium2}{rgb}{0.82,0.84,0.81}
+\definecolor{Aluminium3}{rgb}{0.73,0.74,0.71}
+\definecolor{Aluminium4}{rgb}{0.53,0.54,0.52}
+\definecolor{Aluminium5}{rgb}{0.33,0.34,0.32}
+\definecolor{Aluminium6}{rgb}{0.18,0.20,0.21}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+
+% ------------------------------------------
+% -------- misc
+% ------------------------------------------
+%\renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+
+\usetheme{CambridgeUS}
+\useinnertheme{rectangles}
+\usecolortheme{beaver}
+%\usefonttheme{structurebold} 
+%\setbeamercovered{transparent}
+\AtBeginSection[]{\begin{frame}\frametitle{Table of Contents}\tableofcontents[currentsection]\end{frame}}
+\beamertemplatenavigationsymbolsempty
+
+% ------------------------------------------
+% -------- hyphenation rules
+% ------------------------------------------
+\hyphenation{}
+
+\begin{document}
+\graphicspath{{img/}}
+
+% Title stuff
+\title[Clustering Photos On A World-Scale]{Efficient Clustering, Classification and Browsing of Community Geo-Tagged Photos on a World-Wide Scale}
+\subtitle[Master Thesis]{Master Thesis}
+\author{Daniel Watzinger}
+\institute[University of Passau]{Department of Informatics and Mathematics --- University of Passau}
+\date{May 7, 2012}
+\subject{Informatics}
+
+\frame{
+	\titlepage
+}
+
+\begin{frame}
+	\frametitle{Table of Contents}
+	\tableofcontents[pausesections]
+\end{frame}
+
+\section{Datenbasis}
+\subsection{Flickr}
+\begin{frame}
+	\frametitle{Geo-Tagging Flickr Uploads I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{flickr}
+	\end{center}
+	\begin{itemize}
+		\item \small  Eckdaten: \alert{6,7 Milliarden} Photos, \alert{51 Millionen} User, \alert{4,5 Millionen} Uploads pro Tag (Stand 2011)
+		\item \small  \alert{Flickr Map} bietet die Möglichkeit per Klick in eine virtuelle Karte einen \emph{Geo-Tag} zu generieren
+	\end{itemize}
+\end{frame}
+
+
+\section*{Fragen}
+\begin{frame}
+	\frametitle{Fragen}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.6\textwidth]{question-mark}
+	\end{center}
+\end{frame}
+
+\end{document}
