@@ -80,11 +80,11 @@
 \graphicspath{{img/}}
 
 % Title stuff
-\title[Clustering Photos On A World-Scale]{Efficient Clustering, Classification and Browsing of Community Geo-Tagged Photos on a World-Wide Scale}
-\subtitle[Master Thesis]{Master Thesis}
+\title[Multi-Provider VN Provisioning]{Multi-Provider Virtual Network Provisioning}
+\subtitle[Energy efficient virtual networks]{Hauptseminar: Energy Efficient Virtual Networks}
 \author{Daniel Watzinger}
 \institute[University of Passau]{Department of Informatics and Mathematics --- University of Passau}
-\date{May 7, 2012}
+\date{July 4, 2012}
 \subject{Informatics}
 
 \frame{
@@ -96,16 +96,553 @@
 	\tableofcontents[pausesections]
 \end{frame}
 
-\section{Datenbasis}
-\subsection{Flickr}
+\section{Grundlagen}
+\subsection{NVE Business Model und Actors}
 \begin{frame}
-	\frametitle{Geo-Tagging Flickr Uploads I}
+	\frametitle{Actors}
+	Im \alert{Network Virtualization Environment (NVE)} teilt sich die Rolle des traditionellen \alert{Internet Service Providers (ISP)} in zwei neue Akteure auf:
+	\begin{description}
+		\item[Infrastructure Provider (\emph{InP})] verwalten und administrieren das eigentliche Netzwerk und dessen physikalische Ressourcen. 
+			Zudem teilen sie das Substrat in mehrere virtuelle Ressourcen auf und bieten Möglichkeiten an, um diese zu administrieren.
+		\item[Service Provider (\emph{SP})] kaufen/mieten virtuelle Ressourcen von einem oder mehreren \emph{InPs}, um ein virtuelles Netzwerk \emph{VN} zu realisieren.
+		\item[End User] Nutzen die angebotenen Dienste der Service Provider.
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Vertical Relations I}
 	\begin{center}
-		\includegraphics[keepaspectratio=true,width=\textwidth]{flickr}
+		\includegraphics[keepaspectratio=true,width=0.75\textwidth]{virtualnetworks}
 	\end{center}
+	\small
 	\begin{itemize}
-		\item \small  Eckdaten: \alert{6,7 Milliarden} Photos, \alert{51 Millionen} User, \alert{4,5 Millionen} Uploads pro Tag (Stand 2011)
-		\item \small  \alert{Flickr Map} bietet die Möglichkeit per Klick in eine virtuelle Karte einen \emph{Geo-Tag} zu generieren
+		\item Ein \emph{SP} beschafft sich die benötigten virtuellen Ressourcen von einem oder \alert{mehreren} \emph{InPs}, um das
+			gewünschte \emph{VN} zu synthetisieren. Verwaltet werden die virtuellen Ressourcen
+			über von den \emph{InPs} bereitgestellten programmierbare Schnittstellen.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Vertical Relations II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.75\textwidth]{virtualnetworks}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \alert{Fokus:} \emph{VNs}, die mehrere verschiedene Substratnetze überspannen, können dazu genutzt werden, die Kosten des \emph{SP} zu
+			minimieren oder um ein großes Netz (\alert{interkontinental}) zu ermöglichen.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Vertical Relations III}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.75\textwidth]{virtualnetworks}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Ein \emph{SP} kann die \alert{Rolle} eines \emph{InP} übernehmen, indem er die beschafften virtuellen Ressourcen
+			wiederum in virtuelle Entitäten aufteilt und diese anbietet.
+		\item Zudem verkörpert ein \emph{InP} die Rolle eines \emph{SP}, falls er Ressourcen eines anderen \emph{InP} erwirbt.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Horizontal Relations I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.75\textwidth]{virtualnetworks}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Zwei oder mehr \emph{InPs} realisieren \alert{inter-domain links} zwischen getrennten Substratnetzen,
+			um gemeinsam ein \emph{VN} eines \emph{SP} zu ermöglichen.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Horizontal Relations II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.75\textwidth]{virtualnetworks}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \alert{Private}: Kooperation und Vereinbarungen unter Ausschluss der Öffentlichkeit.
+		\item \alert{Public}: Vertragsschließung basiert auf den Gesetzen der freien Marktwirtschaft (z.B. Ergebnis einer Auktion).
+	\end{itemize}
+\end{frame}
+
+\subsection{Virtual Network Provider}
+\begin{frame}
+	\frametitle{Change of Business Model - A New Actor}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{broker}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Neu:} Der \alert{Virtual Network Provider (\emph{VN Provider})} fungiert als Broker zwischen den \emph{SPs} und \emph{InPs} und ist für das Bereitstellen
+			(\alert{provisioning}) eines virtuellen Netzwerks verantwortlich.
+	\end{itemize}
+\end{frame}
+
+\section{Allgemeines VN Provisioning Problem}
+
+\begin{frame}
+	\frametitle{Susbtrat-Attribute}
+	\small
+	\begin{description}
+		\item[Functional]  Funktionelle Attribute beschreiben \alert{statische} Kenngrößen und Eigenschaften von Substratressourcen (Knoten und Links).
+			\begin{itemize}
+				\item Router, Switch, CPU-Kapazitäten, VLAN, VPN, \alert{Kosten}, Geolocation
+			\end{itemize}
+		\item[Non-Functional] werden genutzt, um \alert{dynamische} Kenngrößen und Beschränkungen der Substratressourcen zu beschreiben.
+			\begin{itemize}
+				\item Echtzeitauslastung von CPUs, Bandbreiten von Links, QoS-Constraints, etc.
+			\end{itemize}
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Provisioning Problem -- Resource Matching I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{rdf}
+	\end{center}
+	\small
+		\begin{itemize}
+			\item \emph{InPs} registrieren und veröffentlichen die \alert{funktionellen Attribute} ihrer zur Verfügung stehenden Ressourcen in einem sogenannten \alert{Ressource Description Framework}.
+			\item \alert{Dynamische Attribute} werden nicht veröffentlicht (zu viele Updates). 
+			\item Die Attribute werden innerhalb des Frameworks mithilfe von \alert{konzeptuellem Clustering} zu \emph{Konzeptklassen} aggregiert. Es ensteht eine Hierarchie von Konzepten, dargestellt
+				durch \alert{Dendrogramme}.
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Provisioning Problem -- Resource Matching II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{provisioning1}
+	\end{center}
+	\small
+	\begin{description}
+		\item[Resource Matching] Für jeden virtuellen Knoten der \alert{Anfragetopologie} des \emph{SP} wird versucht eine Menge
+			von \enquote{passenden} Substratknoten zu finden, die dessen Bedarf erfüllen.
+	\end{description}
+	\begin{itemize}
+		\item Der \alert{VN  Provider} nutzt dazu das  \alert{Ressource Description Framework} und führt eine \alert{Ähnlichkeitssuche} auf den Dendrogrammen aus.
+		\item Im \emph{Multi-Provider-Szenario} können
+			sich in jeder Resultatmenge Substratknoten von \alert{verschiedenen} \emph{InPs} befinden.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Provisioning Problem -- VN Request Splitting}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{provisioning2}
+	\end{center}
+	\small
+	\begin{description}
+		\item[VN Request Splitting] Diese Phase versucht die \alert{Anfragetopologie} in mehrere zusammenhängende Subgraphen aufzuspalten. Jeder Subgraph wird
+		einem einzigen \emph{InP} zugeordnet.
+	\end{description}
+	
+	\begin{itemize}
+		\item \alert{Minimierung} der \alert{Kosten} für das \emph{VN}.
+		\item \alert{Realisierung} von großen \emph{VNs}, die ein einzelner \emph{InP} nicht ermöglichen kann.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Provisioning Problem -- VN Embedding I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{provisioning3}
+	\end{center}
+	\small
+	\begin{description}
+		\item[VN Embedding] Die beteiligten \emph{InP} versuchen, die jeweiligen Anfrage-Subgraphen auf ihren Substraten einzubetten.
+		Für jeden virtuellen Knoten wird ein passender Substratknoten ausgewählt. Zudem wird für jeden \alert{virtuellen Link} ein passender
+		\alert{Pfad} im Substratnetz selektiert.	
+	\end{description}
+	
+	\begin{itemize}
+		\item Zusätzlich: \alert{Peering} der beteiligten \emph{InPs}, um die \alert{inter-domain links}, die die virtuellen Subnetze verbinden, aufzusetzen.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Provisioning Problem -- VN Embedding II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=\textwidth]{provisioning3}
+	\end{center}
+	\small
+	\begin{description}
+		\item[Sequential Request Processing (\emph{SRP})] Ankommende \emph{Embedding-Requests} werden  \alert{sequentiell} abgearbeitet.
+		\item[Parallel Request Processing (\emph{PRP})] Die innerhalb eines Zeitfensters ankommenden \emph{Embedding-Requests} werden \alert{parallel}
+			verarbeitet. Zusätzliche Information steht also zur Verfügung und kann genutzt werden.
+	\end{description}
+\end{frame}
+
+\section{Virtual Network Request Splitting}
+\subsection{Problemstellung}
+\begin{frame}
+	\frametitle{VN Request Splitting -- Problemstellung}
+	\small
+	\begin{itemize}
+		\item \alert{Input:}
+			\begin{itemize}
+				\item Request-Topologie (ungerichteter Graph): $G_v = (V_v,E_v)$
+				\item Resultat des \emph{Ressource Matchings}
+										$$Match(n_v \in V_v) = \{n_s^{InP1}, n_s^{InP2},  \dots\}$$
+				\item Kosten für Subtratknoten  $C_i^{InP1}$ 
+				\item Kosten für intra- sowie inter-domain Links $C_{ij}^{InP1}$ und $C_{ij}^{InP2 InP1}$
+			\end{itemize}
+		\item \alert{Ouput:} \alert{Kostenminimierende} Partitionierung von $G_v$ in zusammenhängende Subgraphen $G_i = (V_i, E_i)$ mit
+										$$V_v = \bigcup_{i \in InPs} V_{i}  \text{ und } E_v = \bigcup_{i \in InPs}  E_{i} \cup \{\text{inter-domain links}\}$$ 
+		\item In der \alert{Embedding} Phase dienen die jeweiligen Subgraphen als \alert{Input}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Request Splitting -- NP-Vollständigkeit I}
+	\small
+	\begin{itemize}
+		\item Das VN-Request Splitting Problem ist schon für zwei \emph{InPs} \alert{NP-vollständig} durch Reduktion von \textbf{MAX-2-SAT} $\in NP$.
+			$$ MAX-2-SAT \leq \text{VN Request Splitting}$$
+		\item \textbf{In anderen Worten:} Es existiert eine Konstruktion in Polynomzeit, die aus jedem \textbf{MAX-2-SAT Problem} eine \alert{VN-Request Splitting Instanz} berechnet.
+				Könnte man nun in Polynomzeit das Ergebnis für das \emph{Splitting} berechnen, hätte man gleichzeitig eine Lösung für das Ursprungsproblem.
+				\textbf{MAX-2-SAT} ist also das \enquote{einfachere} Problem.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Request Splitting -- NP-Vollständigkeit II}
+	\small
+	\begin{itemize}
+		\item \textbf{Aber:} Mit zusätzlichen \alert{Annahmen} über die Kosten von Links kann das Problem für zwei \emph{InPs} in Polynomzeit gelöst werden
+			$$ C_{ij}^{12} \geq C_{ij}^{11} \wedge C_{ij}^{21} \geq C_{ij}^{22}$$
+		\item Dazu wird das Problem in eine klassische \alert{Netzwerk-Fluss} Instanz transformiert, die mit \alert{Max-Flow/Min-Cut} Algorithmen gelöst werden kann.
+	\end{itemize}
+\end{frame}
+
+\subsection{Max-Flow Formulierung}
+\begin{frame}
+	\frametitle{Max-Flow/Min-Cut}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{maxflow}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Ergänzen der Anfrage-Topologie zu einem Flußnetzwerk durch Hinzufügen von \alert{Quelle} \textbf{S} und \alert{Senke} \textbf{T}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Max-Flow/Min-Cut -- Kantengewichte I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{maxflow}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Von der \alert{Quelle} zu jedem Knoten $i$: $C_i^2 + \sum\limits_{k < i, k \in N(i)} C_{ik}^{22}$
+		\item Von jedem Knoten $i$ zur \alert{Senke}: $C_i^1 + \sum\limits_{k < i, k \in N(i)} C_{ik}^{11}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Max-Flow/Min-Cut -- Kantengewichte II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{maxflow}
+	\end{center}
+	\small
+	Für jede \textbf{ursprünglich ungerichtete Kante} $\{i,j\} \in E_v$ und $j < i$:
+	\begin{itemize}
+		\smaller
+		\item Kante $(i,j)$ mit Gewicht: $C_{ij}^{12} - C_{ij}^{11}$
+		\item Kante $(j,i)$ mit Gewicht: $C_{ij}^{21} - C_{ij}^{22}$
+		\item Aufgrund der Annahmen ist das Gewicht \alert{immer positiv}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Max-Flow/Min-Cut -- Partition}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{maxflow}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Nach dem Min-Cut:} Es ensteht eine Partitionierung des Graphen in zwei disjunkte Teilmengen. Die Knoten auf Seite der \alert{Quelle} werden dem ersten \emph{InP (1)} zugewiesen. 
+		Knoten innerhalb der Partition, die die \alert{Senke} enthält, gehören zum zweiten \emph{InP (2)}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Max-Flow/Min-Cut -- Beispiel ($j < i$)}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{maxflow}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Aufsummieren der Kanten des \alert{Min-Cuts} (von \textbf{S }nach \textbf{T}) ergibt:
+			$$C_i^1  + C_{ij}^{11} + C_i^2  +  (C_{ij}^{12} - C_{ij}^{11}) = \underbrace{C_i^1  + C_i^2}_{\text{Knotenkosten}} + \underbrace{C_{ij}^{12}}_{\text{inter-domain Kosten}} $$
+	\end{itemize}
+\end{frame}
+
+\subsection{Heuristik für mehrere Provider}
+\begin{frame}
+	\frametitle{VN Request Splitting - Mehrere Infrastructure Provider}
+	\small
+	\begin{itemize}
+		\item Für \alert{mehr} als zwei \emph{InPs} ist das Problem selbst mit den vorher genannten \emph{Annahmen} über die Kantengewichte \alert{NP-vollständig}.
+		\item \textbf{Rekursive Max-Flow/Min-Cut Heuristik}:
+			\begin{itemize}
+				\item \alert{Clustern} der \emph{InPs}:  Die \alert{Ähnlichkeitsmetrik} wird über die Kosten für die Ressourcen definiert.
+				\item Es ensteht ein Dendrogram. Die Blätter des Binärbaums sind die eigentlichen \emph{InPs}. Die inneren Knoten stellen \alert{virtuelle InPs} dar, deren Kosten für die Ressourcen aus
+					den realen Kosten der zusammengefassten Providern angenähert werden.
+				\item Rekursives Anwenden der \alert{Max-Flow/Min-Cut} Lösung auf jeder Ebene des Binärbaums.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Rekursive Max-Flow/Min-Cut Heuristik}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{recursive_heuristic}
+	\end{center}
+	\small
+\end{frame}
+
+\subsection{Evaluation}
+
+\begin{frame}
+	\frametitle{VN Request Splitting -- Evaluation}
+	\small
+	Vergleich der Heuristik mit einer \alert{ILP-Formulierung} des Problems, welche ein exaktes Ergebnis liefert
+	\begin{itemize}
+		\item \textbf{Wie erwartet:} Je größer die Anfrage-Topologie umso \alert{aufwändiger} ist die \emph{LP-Lösung} zu berechnen und umso \alert{schneller} ist relativ dazu gesehen die vorgestellte Heuristik.
+		\item Auch bezüglich der Kosten liefert die Heuristik ein gutes Ergebnis:
+			\begin{itemize}
+				\item Bei \textbf{5} \emph{InPs} betragen die Mehrkosten zur optimalen Lösung nicht mehr als \alert{2\%}
+				\item Bei \textbf{10} \emph{InPs} bleiben die Mehrkosten unter \alert{5\%}
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Virtual Network Embedding}
+
+\begin{frame}
+	\frametitle{VN Embedding}
+	\small
+	\begin{itemize}
+		\item \textbf{Input für jeden InP}: Der/Die resultierende(n) (Sub)Graph(en) der \emph{VN Splitting Phase}.
+		\item \textbf{Gesucht}: \alert{Kostenminimales} Mapping von virtuellen Knoten auf Substratknoten sowie von virtuellen Links auf Pfade im Substrat.
+		\item Problem ist in dieser Variante \alert{NP-vollständig}.
+		\item Formulierung des Ursprungsproblems als \alert{Mixed-Integer Program (MIP)} eines \alert{Netzwerkfluss-Problems} mit exaktem Ergebnis:
+			\begin{itemize}
+				\item \alert{Simultane} Einbettung von Knoten und Links.
+				\item Möglichkeit der \alert{parallelen} Abarbeitung von Requests (\emph{PRP}).
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VN Embedding -- Evaluation}
+	\small
+	\begin{itemize}
+		\item \textbf{Ergebnisse der Evaluation}
+			\begin{itemize}
+				\item \textbf{PRP} führt zu \alert{geringeren} Einbettungskosten als \textbf{SRP}.
+				\item Bessere \alert{Akzeptanzrate} der \emph{InPs} im Vergleich zu Heuristiken oder Lösungen mit vereinfachten Annahmen aufgrund der \alert{exakten Lösung}.
+				\item \textbf{Aber:} \alert{Exponentielle Laufzeit} des \textbf{MIP} -- die parallele Lösung benötigt schon
+				für vier Anfrage von je 6 virtuellen Knoten auf ein Substrat mit 30 Knoten mehr als eine Minute.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{V-Mart}
+
+\begin{frame}
+	\frametitle{V-Mart -- Motivation}
+	\small
+	\begin{itemize}
+		\item \textbf{Bisher}:
+			\begin{itemize}
+				\item \emph{Peering} der \emph{InPs}, um gemeinsam ein \emph{VN} zu hosten (\emph{private}, nicht marktgerecht, kein Wettbewerb, keine Kostenminimierung für \emph{SP}).
+				\item Veröffentlichung der \emph{funktionellen Attribute} der verfügbaren Ressourcen durch die \emph{InPs} (\emph{public}, 
+					\alert{Problem:} Keine Unterstützung für Preismodelle wie \alert{Mengenrabatt} oder \alert{Pauschal-/Paketangebote})
+			\end{itemize}
+		\item \textbf{Lösung}: Auktionssystem \alert{V-Mart} für das \emph{Virtual Network Provisioning}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Ziele}
+	\small
+	\begin{description}
+		\item[Flexibilität] für \emph{SPs} und \emph{InPs}. \emph{SP} kann die benötigten Ressourcen selbst zusammenstellen und aus verschiedenen Angeboten 
+			wählen und ist \alert{nicht} auf \alert{vorkonfigurierte Pakete} angewiesen. 
+			Andererseits können die \emph{InPs} ihre Ressourcen anbieten ohne ihre \alert{internen/geheimen Preismodelle offenlegen} zu müssen.
+		\item[Marktgerecht] Die \emph{SPs} sind vor Preisabsprachen/-manipulationen der \emph{InPs} geschützt und können ihre Kosten \alert{minimieren}. 
+		\item[Automatisiert] Unterstützt \alert{on-demand} Services. 
+		\item[Effizient] \emph{VN Splitting Problem} ist \alert{NP-hart}.
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Request for Quotation}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.9\textwidth]{vmart}
+	\end{center}
+	\smaller
+	\begin{itemize}
+		\item \textbf{Vickreyauktion:} Abgabe von \alert{geheimen Geboten} für ein Objekt. Der Höchstbietende (\emph{hier: der günstigste Anbieter}) bekommt den Zuschlag,
+		leistet den Service aber in Höhe des \alert{zweitbesten Gebots}.
+		\item \textbf{Request for Quotation:} Besteht aus Anfragetopologie, Anforderungen für die virtuellen Ressourcen (Kapazitäten, Bandbreiten, Latenzen) und \alert{Co-Location}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Co-Location I}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{colocation}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Co-Location:} Spezifiziert, welche Knoten von identischen \emph{InPs} angefordert werden müssen.
+		\item \textbf{Ziel: } Performanzgarantien für Teilbereiche des virtuellen Netzes, welche über Domaingrenzen kompliziert zu realisieren sind.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Co-Location II}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{colocation}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Co-Location:} Die Relation ist reflexiv, symmetrisch und transitiv (\alert{Äquivalenzrelation})
+			$$col(a,b) \Leftrightarrow col(b,a)$$
+			$$(col(a,b) \wedge col(b,c)  \Leftrightarrow col(a,c)$$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Co-Location III}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.8\textwidth]{colocation}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Umsetzung: } Die Relation zerteilt die Ursprungstopologie in \alert{atomare} \emph{Inseln}, genannt \alert{V-Lets} (Knoten werden zu \alert{Superknoten} zusammengefasst).
+			An der Auktion teilnehmende \emph{InPs}
+			geben Gesamtgebote für \alert{V-Lets} ab. Zudem wird das \emph{VN Splitting} auf dem so entstandenen \alert{V-Let Metagraph} durchgeführt.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Ressource Quote}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.9\textwidth]{vmart}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Ressource Quote:} Abschätzung der Hostingkosten der gesamten Topologie durch \emph{VN Embedding} der teilnehmenden \emph{InPs}.
+			Abgabe von  \alert{Geboten} für jede virtuelle Ressource (\emph{V-Let}).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Virtual Network Splitting}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.9\textwidth]{vmart}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item Der \emph{SP} weist jedem Gebot eines \emph{InP} sein \alert{Vickrey-Gebot} zu -- das nächsthöchste Gebot relativ zum betrachteten Gebot.
+		\item \textbf{Heuristik:} Das \emph{VN Splitting Problem} wird iterativ durch \alert{Local Improvement} auf dem \emph{V-Let Metagraph} gelöst.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Local Improvement I}
+	\small
+	\begin{itemize}
+		\item \textbf{Varianten für die initiale Partition}:
+			\begin{itemize}
+				\item \textbf{Min-Cost}: Jedes \emph{V-Let} wird dem \emph{InP} mit dem bestem Preis zugewiesen (dessen \alert{Vickrey-Gebot}).
+				\item \textbf{Min-Cut}: Iterative Zuweisung des jeweils \alert{größtmöglichen Subgraph}, der durch einen \alert{einzigen} \emph{InP}
+					gehostet werden kann und keine bereits zugewiesenen Knoten enthält. \alert{Tie-Break} mithilfe der Gesamtkosten für den Subgraph. Falls kein weiterer Subgraph existiert, werden
+					die verbleibenden \emph{V-Lets} nach dem \textbf{Min-Cost} Paradigma zugewiesen.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Local Improvement II}
+	\small
+	\begin{itemize}
+			\item Beide Ansätze vernachlässigen die \alert{Linkkosten}, insbesondere die \emph{inter-domain} Kosten.
+			\item \textbf{Deshalb:} Local Improvement (Verschieben eines \emph{V-Lets} in eine andere Partition) mit folgender \alert{Gain-Metrik}
+				$$\beta \cdot (\text{Verringerung der Linkkosten}) - \alpha \cdot (\text{Zunahme der V-Let-Kosten})$$
+			\item Termination nach $k$ Iterationen oder falls eine Iteration keinen positiven \alert{Gain} produziert.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Final Offer}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.9\textwidth]{vmart}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Final Offer:} Der \emph{SP} sendet die resultierenden Segmente und deren zugehörigen Auktionsgewinner und Preis an alle beteiligten \emph{InP}. Nun können alle Auktionäre ein
+			\alert{finales geheimes Gebot} -- nach \alert{oben beschränkt} durch den Preis der ersten Auktionsrunde -- für die jeweiligen Segmente abgeben.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Contracting}
+	\begin{center}
+		\includegraphics[keepaspectratio=true,width=0.9\textwidth]{vmart}
+	\end{center}
+	\small
+	\begin{itemize}
+		\item \textbf{Contracting:} Als letzten Schritt schließt der \emph{SP} für jedes Netzsegment einen Vertrag mit dem jeweiligen Gewinner zum \alert{Preis der zweiten Auktionsrunde}.
+		Falls es in der zweiten Runde kein besseres Gebot für ein Segment gibt, bekommt der Gewinner der ersten \alert{Vickrey-Runde} den Zuschlag.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Preismodelle}
+	\small
+	\begin{itemize}
+		\item \textbf{Erste Runde:} Liefert eine faire Abschätzung der Kosten für den \emph{SP} auf deren Basis er das \emph{VN Splitting} durchführen kann.
+		\item \textbf{Finale Runde:} Unterstützt die verschiedenen \alert{Preismodelle} der \emph{InPs}.
+			\begin{itemize}
+				\item \textbf{Mengenrabatt:} Rabatt wird im finalen Gebot berücksichtigt (Anzahl der zu hostenden Ressourcen steht fest).
+				\item \textbf{Pauschal-/Paketpreis:} Gebote für die einzelnen Ressourcen werden basierend auf den Paketpreisen berechnet. Zusätzlich gilt, je kleiner $\frac{\beta}{\alpha}$ desto
+					größer ist die Wahrscheinlichkeit, dass das \alert{ursprüngliche Paket} eines \emph{InP} erhalten bleibt.
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{V-Mart -- Evaluation}
+	\small
+	\begin{itemize}
+		\item Das Verhältnis $\frac{\beta}{\alpha}$ sollte nach der \alert{Marksituation} gesetzt werden. Gibt es viele Anbieter mit Pauschalpreisen sollte der Wert klein sein. Das Gegenteil gilt bei Anbietern
+			mit individuellen Preisen für die jeweiligen Ressourcen (\textbf{Turning point:} $\frac{\beta}{\alpha} = 1$) .
+		\item Die \alert{Wahrscheinlichkeit} mit der ein \emph{InP} eine bestimmte virtuelle Ressource hosten kann, bestimmt welche initiale Partition der \emph{Local Improvement} Heuristik die geringsten Kosten liefert.
+			Eine \alert{große} Wahrscheinlichkeit begünstigt \textbf{Min-Cut}. Bei \alert{geringer} Wahrscheinlichkeit gewinnt das \textbf{Min-Cost} Verfahren. 
+	\end{itemize}
+\end{frame}
+
+\section{Energieeffizienz}
+\begin{frame}
+	\frametitle{Energieeffizienz}
+	\small
+	\begin{itemize}
+		\item \textbf{VN Provisioning Modell:} Berücksichtigung der Energieeffizienz in der \emph{VN Splitting} Phase durch den \emph{VN Provider} bzw. beim \emph{Embedding} durch die \emph{InPs},
+			jeweils durch \alert{Linearkombination} der Kosten und des Energievebrauchs.
+		\item \textbf{V-Mart:} Keine Möglichkeit der Einflussnahme durch den \emph{SP}, da er an die monetären Gebote der Auktionäre \alert{gebunden} ist (ein \alert{energieverschwendender} Provider mit gutem Preis
+			muss trotzdem den Zuschlag erhalten). Beim finalem \emph{Embedding} der einzelnen Segmente durch die \emph{InPs} ist wieder eine Berücksichtigung mittels Linearkombination möglich.
 	\end{itemize}
 \end{frame}
 

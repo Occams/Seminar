@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="618.15161"
+   height="115.45344"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="provisioning2.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL"
+       style="overflow:visible">
+      <path
+         id="path4045"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="DiamondLend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DiamondLend"
+       style="overflow:visible">
+      <path
+         id="path3982"
+         d="M 0,-7.0710768 -7.0710894,0 0,7.0710589 7.0710462,0 0,-7.0710768 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.8,0,0,0.8,-5.6,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotL"
+       style="overflow:visible">
+      <path
+         id="path3946"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3887"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3884"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="334.56272"
+     inkscape:cy="52.204874"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="10"
+     fit-margin-left="10"
+     fit-margin-right="10"
+     fit-margin-bottom="10" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-20.199057,10.187033)">
+    <g
+       id="g6207"
+       transform="translate(0,12)"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         ry="18.904224"
+         y="44.457958"
+         x="32.238632"
+         height="37.808449"
+         width="110.18994"
+         id="rect2985"
+         style="fill:#5f8dd3;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="69.999999%"
+         id="text3011"
+         y="60.790756"
+         x="87.920517"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         xml:space="preserve"><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           y="60.790756"
+           x="87.920517"
+           id="tspan3013"
+           sodipodi:role="line">Resource</tspan><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           id="tspan3015"
+           y="76.190758"
+           x="87.920517"
+           sodipodi:role="line">Matching</tspan></text>
+    </g>
+    <g
+       id="g6213"
+       transform="translate(0,12)"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         style="fill:#5f8dd3;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="use3005"
+         width="110.18994"
+         height="37.808449"
+         x="196.23863"
+         y="44.457958"
+         ry="18.904224" />
+      <text
+         sodipodi:linespacing="69.999999%"
+         id="text3011-7"
+         y="60.540062"
+         x="251.2191"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         xml:space="preserve"><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           id="tspan3015-0"
+           y="60.540062"
+           x="251.2191"
+           sodipodi:role="line">VN Request</tspan><tspan
+           id="tspan3084"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           y="75.940063"
+           x="251.2191"
+           sodipodi:role="line">Splitting</tspan></text>
+    </g>
+    <g
+       id="g6219"
+       transform="translate(2,12)"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         ry="18.904224"
+         y="44.457958"
+         x="354.23865"
+         height="37.808449"
+         width="110.18994"
+         id="use3007"
+         style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="69.999999%"
+         id="text3011-9"
+         y="60.397202"
+         x="409.36197"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         xml:space="preserve"><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           id="tspan3015-8"
+           y="60.397202"
+           x="409.36197"
+           sodipodi:role="line">VN</tspan><tspan
+           id="tspan3088"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           y="75.797203"
+           x="409.36197"
+           sodipodi:role="line">Embedding</tspan></text>
+    </g>
+    <g
+       id="g6225"
+       transform="translate(0,12)"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         style="fill:#5f8dd3;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="use3009"
+         width="110.18994"
+         height="37.808449"
+         x="516.23865"
+         y="44.457958"
+         ry="18.904224" />
+      <text
+         sodipodi:linespacing="69.999999%"
+         id="text3011-9-2"
+         y="59.968632"
+         x="572.36194"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         xml:space="preserve"><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           y="59.968632"
+           x="572.36194"
+           id="tspan3013-48-4"
+           sodipodi:role="line">Resource</tspan><tspan
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           id="tspan3015-8-5"
+           y="75.368629"
+           x="572.36194"
+           sodipodi:role="line">Binding</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 306.42857,75.362183 47.81008,0"
+       id="path3109"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend);display:inline"
+       d="m 466.42859,75.362183 49.81006,0"
+       id="path3111"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g6219"
+       inkscape:connection-start-point="d4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 142.42857,75.362183 53.81006,0"
+       id="path5641"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g6293">
+      <rect
+         rx="0"
+         ry="18.39369"
+         y="0.97356761"
+         x="31.305367"
+         height="36.78738"
+         width="111.93024"
+         id="rect6231"
+         style="fill:#66ff00;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         x="86.790527"
+         y="15.461491"
+         id="text3011-2"
+         sodipodi:linespacing="69.999999%"><tspan
+           sodipodi:role="line"
+           x="86.790527"
+           y="15.461491"
+           id="tspan3015-6"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold">Request</tspan><tspan
+           id="tspan6289"
+           sodipodi:role="line"
+           x="86.790527"
+           y="30.86149"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold">Topology</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#EmptyTriangleOutL)"
+       d="m 87.291218,37.760948 0.02108,18.69701"
+       id="path6291"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#rect6231"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end="#g6207"
+       inkscape:connection-end-point="d4" />
+    <g
+       transform="translate(484.00874,-0.05429124)"
+       id="g6293-1">
+      <rect
+         rx="0"
+         ry="18.39369"
+         y="0.97356761"
+         x="31.305367"
+         height="36.78738"
+         width="111.93024"
+         id="rect6231-4"
+         style="fill:#66ff00;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:69.99999881%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Adobe Arabic;-inkscape-font-specification:Adobe Arabic"
+         x="86.790527"
+         y="15.461491"
+         id="text3011-2-2"
+         sodipodi:linespacing="69.999999%"><tspan
+           id="tspan6289-2"
+           sodipodi:role="line"
+           x="86.790527"
+           y="15.461491"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold">Virtual</tspan><tspan
+           sodipodi:role="line"
+           x="86.790527"
+           y="30.86149"
+           style="font-size:22px;font-weight:bold;line-height:69.99999881%;-inkscape-font-specification:Adobe Arabic Bold"
+           id="tspan6331">Network</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#EmptyTriangleOutL)"
+       d="m 571.31527,56.457958 -0.0182,-18.751301"
+       id="path7285"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g6225"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end="#g6293-1"
+       inkscape:connection-end-point="d4" />
+  </g>
+</svg>
