@@ -188,7 +188,7 @@
 \section{Allgemeines VN Provisioning Problem}
 
 \begin{frame}
-	\frametitle{Susbtrat-Attribute}
+	\frametitle{Substrat-Attribute}
 	\small
 	\begin{description}
 		\item[Functional]  Funktionelle Attribute beschreiben \alert{statische} Kenngrößen und Eigenschaften von Substratressourcen (Knoten und Links).
@@ -209,7 +209,7 @@
 	\end{center}
 	\small
 		\begin{itemize}
-			\item \emph{InPs} registrieren und veröffentlichen die \alert{funktionellen Attribute} ihrer zur Verfügung stehenden Ressourcen in einem sogenannten \alert{Ressource Description Framework}.
+			\item \emph{InPs} registrieren und veröffentlichen die \alert{funktionellen Attribute} ihrer zur Verfügung stehenden Ressourcen in einem sogenannten \alert{Resource Discovery Framework}.
 			\item \alert{Dynamische Attribute} werden nicht veröffentlicht (zu viele Updates). 
 			\item Die Attribute werden innerhalb des Frameworks mithilfe von \alert{konzeptuellem Clustering} zu \emph{Konzeptklassen} aggregiert. Es ensteht eine Hierarchie von Konzepten, dargestellt
 				durch \alert{Dendrogramme}.
@@ -227,7 +227,7 @@
 			von \enquote{passenden} Substratknoten zu finden, die dessen Bedarf erfüllen.
 	\end{description}
 	\begin{itemize}
-		\item Der \alert{VN  Provider} nutzt dazu das  \alert{Ressource Description Framework} und führt eine \alert{Ähnlichkeitssuche} auf den Dendrogrammen aus.
+		\item Der \alert{VN  Provider} nutzt dazu das  \alert{Resource Discovery Framework} und führt eine \alert{Ähnlichkeitssuche} auf den Dendrogrammen aus.
 		\item Im \emph{Multi-Provider-Szenario} können
 			sich in jeder Resultatmenge Substratknoten von \alert{verschiedenen} \emph{InPs} befinden.
 	\end{itemize}
@@ -381,7 +381,7 @@
 	\small
 	\begin{itemize}
 		\item Aufsummieren der Kanten des \alert{Min-Cuts} (von \textbf{S }nach \textbf{T}) ergibt:
-			$$C_i^1  + C_{ij}^{11} + C_i^2  +  (C_{ij}^{12} - C_{ij}^{11}) = \underbrace{C_i^1  + C_i^2}_{\text{Knotenkosten}} + \underbrace{C_{ij}^{12}}_{\text{inter-domain Kosten}} $$
+			$$C_i^1  + C_{ij}^{11} + C_j^2  +  (C_{ij}^{12} - C_{ij}^{11}) = \underbrace{C_i^1  + C_j^2}_{\text{Knotenkosten}} + \underbrace{C_{ij}^{12}}_{\text{inter-domain Kosten}} $$
 	\end{itemize}
 \end{frame}
 
@@ -617,8 +617,8 @@
 		\item \textbf{Finale Runde:} Unterstützt die verschiedenen \alert{Preismodelle} der \emph{InPs}.
 			\begin{itemize}
 				\item \textbf{Mengenrabatt:} Rabatt wird im finalen Gebot berücksichtigt (Anzahl der zu hostenden Ressourcen steht fest).
-				\item \textbf{Pauschal-/Paketpreis:} Gebote für die einzelnen Ressourcen werden basierend auf den Paketpreisen berechnet. Zusätzlich gilt, je kleiner $\frac{\beta}{\alpha}$ desto
-					größer ist die Wahrscheinlichkeit, dass das \alert{ursprüngliche Paket} eines \emph{InP} erhalten bleibt.
+				\item \textbf{Pauschal-/Paketpreis:} Die Gebote für die einzelnen Ressourcen werden basierend auf den Paketpreisen berechnet.  Für die Pauschalanbieter ist es wünschenswert das \alert{ursprüngliche
+					Paket} in der \emph{Splitting Phase} zu erhalten (\textbf{Lösung:} günstiger Preis, Verhältnis der Linearfaktoren $\frac{\beta}{\alpha}$ der \emph{Gain-Metrik}). 
 			\end{itemize}
 	\end{itemize}
 \end{frame}
