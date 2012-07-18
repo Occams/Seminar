@@ -217,10 +217,10 @@ Consider a variable $x_i$ for each \emph{virtual node} $i$ that either equals $1
 
 \small
 
-It remains to show that \emph{VN Splitting} is in fact a NP-hard problem. The authors use a reduction from \emph{MAX-2-SAT} $\in NP$. \emph{MAX-2-SAT} instances
+It remains to show that \emph{VN Splitting} is in fact a NP-hard problem. The authors use a reduction from \emph{MAX-2-SAT} $\in~NP$. \mbox{\emph{MAX-2-SAT}} instances
 are Boolean formulas in \emph{conjunctive normal form}
-featuring exactly two literals per clause. The goal of \emph{MAX-2-SAT} is to find a fitting assignment of Boolean variables in order to maximize the number of satisfied clauses. Consider an arbitrary 
-\emph{MAX-2-SAT} problem instance with Boolean variables $y_k$
+featuring exactly two literals per clause. The goal of \mbox{\emph{MAX-2-SAT}} is to find a fitting assignment of Boolean variables in order to maximize the number of satisfied clauses. Consider an arbitrary 
+\mbox{\emph{MAX-2-SAT}} problem instance with Boolean variables $y_k$
 
 \normalsize
 
@@ -246,7 +246,7 @@ $$
 
 \small
 
-A solution for the original \emph{MAX-2-SAT} problem is then obtained by solving the resulting \emph{VN Splitting} instance using costs as defined above. If the first \emph{InP} allocates node $i$
+A solution for the original \emph{MAX-2-SAT} problem is then obtained by solving the resulting \emph{VN Splitting} instance, using costs as defined above. If the first \emph{InP} allocates node $i$
 then $z_i$ is assigned $true$, analogously $z_i$ equals $false$ if the second \emph{InP} hosts the corresponding \emph{virtual node}. In addition, by construction the minimum 
 total provisioning costs equal the number of unsatisfied clauses.
 The reduction can clearly be achieved in polynomial time. Thus it follows that \emph{VN Splitting} across two \emph{InPs} is NP-hard.
