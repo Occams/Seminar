@@ -69,15 +69,17 @@ Both proposals are evaluated through simulation in terms of performance. In addi
 
 \begin{document}
 
-\begin{bottomstuff}
-This work originated from an advanced seminar on "Energy efficient virtual networks" at the University of Passau.\\
-Author's address: Daniel Watzinger; email: daniel.watzinger@gmail.com
-\end{bottomstuff}
+%\begin{bottomstuff}
+%This work originated from an advanced seminar on "Energy efficient virtual networks" at the University of Passau.\\
+%Author's address: Daniel Watzinger; email: daniel.watzinger@gmail.com
+%\end{bottomstuff}
 \maketitle
 
 % Introduction
 \section{Introduction}
 \label{sec:introduction}
+
+\small
 
 Network virtualization is one of the keys to a new polymorphic future Internet. Its basic entity is called a 
 \emph{virtual network~(VN)} that is composed of \emph{virtual nodes} and \emph{virtual links}. It can be described as
@@ -103,19 +105,12 @@ into virtual ones and to provide programmable interfaces to administrate these v
  In the case of a multi-provider environment, meaning an environment where two or more
 \emph{InPs} can host at least parts of the desired \emph{VN}, a \emph{SP} is likely to try to minimize its costs by splitting the \emph{VN} topology across multiple substrate networks.
 Hosting of large \emph{VNs} that cannot be allocated by one individual \emph{InP} exclusively by a collective effort of several providers is another reason for a \emph{SP}
-to subdivide its topology into segments. Figure~\ref{fig1} depicts \emph{virtual networks} overlaying physical substrates in a multi-provider environment.
-The link sliced by a red ellipse is called an \emph{inter-domain} link and is responsible for connecting two disjoint substrate networks of different \emph{InPs} in opposition to 
+to subdivide its topology into segments.
+Links connecting two disjoint substrate networks of different \emph{InPs} are called \emph{inter-domain} links in opposition to 
 \emph{intra-domain} links within substrate bounds. Such a \emph{InP-to-InP} relationship is referred to as \emph{horizontal}. 
 Splitting of the virtual network topology may occur in a \emph{private} manner where all participating \emph{InPs} peer
 to provide a packaged deal to the \emph{SP}. However, much more desirable is a \emph{public} splitting process, where the partitioning of the topology originates from a customer- and
 market-driven environment.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{virtualnetworks}
-	\caption{Virtual Networks overlaying physical substrates in a multi-provider environment}
-	\label{fig1}
-\end{figure}
 
 The remainder of this paper analyzes two different approaches to tackle the \emph{virtual network provisioning} with a focus on multi-provider environments.
 In \citeN{Houidi}, the authors classify the \emph{provisioning} process into several disjoint steps and provide detailed algorithmic solutions for each.
@@ -146,7 +141,7 @@ Figure~\ref{fig2} visualizes the placement of this new actor in the resulting bu
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{broker}
+	\includegraphics[width=0.7\textwidth]{broker}
 	\caption{A \emph{Virtual Network Provider} serves as a broker for  both \emph{Service} and \emph{Infrastructure Providers}}
 	\label{fig2}
 \end{figure}
@@ -156,7 +151,7 @@ Figure~\ref{fig3} depicts the work-flow of the \emph{provisioning} process.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{provisioning2}
+	\includegraphics[width=0.7\textwidth]{provisioning2}
 	\caption{The workflow of the \emph{provisioning} process. The most important \emph{VN Request Splitting} step is highlighted in red.}
 	\label{fig3}
 \end{figure}
@@ -178,7 +173,7 @@ is used to organize and group resources with similar concepts, descriptions and 
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{rdf}
+	\includegraphics[width=0.7\textwidth]{rdf}
 	\caption{\emph{InPs} advertise available resources with the help of a discovery framework. 
 		Subsequently,  the \emph{Virtual Network Provider} uses the \emph{Resource~Discovery~Framework} to determine a set of matching substrate nodes for each \emph{virtual node}}
 	\label{fig4}
@@ -208,6 +203,8 @@ is examined. The authors assume that the following costs for each substrate node
 Consider a variable $x_i$ for each \emph{virtual node} $i$ that either equals $1$ or $0$ if $i$ is allocated by the first or second \emph{InP}. Finding the optimal cost-minimizing solution for
 \emph{VN Splitting} can then be modeled by a simple \emph{0-1 quadratic program} formulation
 
+\normalsize
+
 \[
  \phi
    \begin{dcases}
@@ -218,28 +215,36 @@ Consider a variable $x_i$ for each \emph{virtual node} $i$ that either equals $1
    \end{dcases}
 \]
 
+\small
+
 It remains to show that \emph{VN Splitting} is in fact a NP-hard problem. The authors use a reduction from \emph{MAX-2-SAT} $\in NP$. \emph{MAX-2-SAT} instances
 are Boolean formulas in \emph{conjunctive normal form}
 featuring exactly two literals per clause. The goal of \emph{MAX-2-SAT} is to find a fitting assignment of Boolean variables in order to maximize the number of satisfied clauses. Consider an arbitrary 
 \emph{MAX-2-SAT} problem instance with Boolean variables $y_k$
 
+\normalsize
+
 $$
 (y_a \vee y_b) \wedge (y_c \vee y_d) \wedge \dots \wedge (y_i \vee y_j)
 $$
+
+\small
 
 Finding an assignment that minimizes the number of clauses that are not satisfied is equivalent to maximizing the number of those that are satisfied. This duality helps to reduce the complexity of the problem
 since it is clear that $(y_i \vee y_j)$ is false if and only if both variables equal false or correspondingly $(\lnot y_i \wedge \lnot y_j)$ is true.
 Building a \emph{VN Splitting} instance is done by considering a \emph{virtual node} $i$ for each Boolean variable $y_i$. Additionally, all provisioning costs equal zero, particularly node hosting costs $C_i^{X}$,
 with the exception of the following rules
 
+\normalsize
+
 $$
-\begin{array}{ccr}
-	(y_i \vee y_j) & \Rightarrow & C_{ij}^2 = 1 \\
-	(\lnot y_i \vee y_j) & \Rightarrow &C_{ij}^{12} = 1 \\
-	(y_i \vee \lnot y_j) & \Rightarrow & C_{ij}^{21} = 1 \\
-	(\lnot y_i \vee \lnot y_j) & \Rightarrow & C_{ij}^1 = 1
+\begin{array}{cccccccccccccccc}
+	(y_i \vee y_j) & \Rightarrow & C_{ij}^2 = 1 &;& (\lnot y_i \vee y_j) & \Rightarrow &C_{ij}^{12} = 1 &;& (y_i \vee \lnot y_j) & \Rightarrow & C_{ij}^{21} = 1 &;& (\lnot y_i \vee \lnot y_j) & \Rightarrow & C_{ij}^1 = 1
+	
 \end{array}
 $$
+
+\small
 
 A solution for the original \emph{MAX-2-SAT} problem is then obtained by solving the resulting \emph{VN Splitting} instance using costs as defined above. If the first \emph{InP} allocates node $i$
 then $z_i$ is assigned $true$, analogously $z_i$ equals $false$ if the second \emph{InP} hosts the corresponding \emph{virtual node}. In addition, by construction the minimum 
@@ -251,9 +256,13 @@ However, by adding some reasonable constraints to the link costs, splitting can 
 than setup of an \emph{intra-domain} link, the problem may be reduced to a network flow problem, which is subsequently solved using \emph{max-flow/min-cut} algorithms like \emph{Edmonds-Karp}
 or \emph{Dinitz blocking flow}.
 
+\normalsize
+
 $$
 	\forall i,j: C_{ij}^{12} \geq C_{ij}^1 \wedge C_{ij}^{21} \geq C_{ij}^2
 $$
+
+\small
 
 To obtain a \emph{max-flow/min-cut} instance the original request topology is extended to a flow network, which is a directed weighted graph, by adding a source $s$ and a sink $t$.
 Additionally, the following edges and their corresponding flow capacities are appended. Consider that $N(i)$ denotes the set of adjacent \emph{virtual nodes} to $i$.
@@ -267,7 +276,7 @@ Additionally, the following edges and their corresponding flow capacities are ap
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{maxflow}
+	\includegraphics[width=0.6\textwidth]{maxflow}
 	\caption{Expansion of a request topology to a flow network with corresponding edge capacities. Note that $j < i$ holds in this example.}
 	\label{fig5}
 \end{figure}
@@ -283,11 +292,15 @@ Furthermore, the size of the \emph{min-cut} equals the total and minimal
 costs to provision the \emph{VN}. Consider two subsets $S$ and $T$ denoting the partitioning obtained by a \emph{max-flow/min-cut} solution containing $s$ and $t$, respectively.
 It follows, that the size of any cut (the capacity of cut edges from $S$ to $T$), particularly the size of the \emph{min-cut}, is given by
 
+\normalsize
+
 $$
 	\underbrace{\sum\limits_{i \in S} C_i^1 + \sum\limits_{i \in T} C_i^2}_{\text{node costs}} + 
 	\underbrace{\sum\limits_{i,j \in T, i < j, j \in N(i)} C_{ij}^2 + \sum\limits_{i,j \in S, i < j, j \in N(i)} C_{ij}^1}_{\text{intra-domain costs}}
 	+\underbrace{\sum\limits_{i \in S, j \in T, j \in N(i)} C_{ij}^{12}}_{\text{inter-domain costs}}
 $$
+
+\small
 
 Therefore, by minimizing the cut size the provisioning costs are minimized. Thus  solving the network flow problem yields an optimal solution for \emph{VN Splitting} across two \emph{InPs}.
 
@@ -300,23 +313,26 @@ Firstly, a preprocessing step that clusters \emph{InPs} based on their cost simi
 \emph{InPs} that are the most similar, yet again yielding a dendrogram. This time leafs of the dendrogram represent actual \emph{InPs}
 whereas inner nodes are formed by \emph{logical InPs}. Consider two \emph{InPs} $X$ and $Y$, the dissimilarity metric $d$ is given by
 
+\normalsize
+
 $$
  d(X,Y) = \sqrt{\sum\limits_{i} \abs{C_i^X - C_i^Y}^2 + \sum\limits_{i, j \in N(i)} \abs{C_{ij}^X - C_{ij}^Y}^2}
 $$
 
+\small
+
 During each iteration, two \emph{InPs} $X$ and $Y$ are merged into one \emph{logical InP} $L$. Its costs are approximated based on the costs of the grouped \emph{InPs} as follows
 
-$$
-\begin{array}{lr}
-	C_i^L = \frac{C_i^X + C_i^Y}{2} & C_{ij}^{L} = \frac{C_{ij}^{XY} + C_{ij}^{YX} + C_{ij}^{X} + C_{ij}^{Y} }{4}
-\end{array}
-$$
+\normalsize
 
 $$
-\begin{array}{lr}
+\begin{array}{cccc}
+	C_i^L = \frac{C_i^X + C_i^Y}{2} & C_{ij}^{L} = \frac{C_{ij}^{XY} + C_{ij}^{YX} + C_{ij}^{X} + C_{ij}^{Y} }{4} & 
 	C_{ij}^{LZ} = \frac{C_{ij}^{XZ} + C_{ij}^{YZ}}{2} & C_{ij}^{ZL} = \frac{C_{ij}^{ZX} + C_{ij}^{ZY}}{2} 
 \end{array}
 $$
+
+\small
 
 Secondly, the optimal \emph{max-flow/min-cut} solution is recursively applied at each plane of the dendrogram
 since exactly two (possibly \emph{logical}) \emph{InP} and their corresponding costs are distinguished at each level of the binary tree. Thus one obtains a partitioning of the request topology.
@@ -324,7 +340,7 @@ Figure~\ref{fig6} depicts the process in an environment involving four \emph{Inf
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{recursive_heuristic}
+	\includegraphics[width=0.6\textwidth]{recursive_heuristic}
 	\caption{The heuristic \emph{max-flow/min-cut} solution across multiple providers splits the request topology recursively at each level of a binary tree, which is obtained 
 		by agglomerative clustering of involved \emph{InPs} based on cost similarity}
 	\label{fig6}
@@ -393,7 +409,7 @@ efficiently solves splitting of the request topology using a local improvement h
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{vmart}
+	\includegraphics[width=0.7\textwidth]{vmart}
 	\caption{The \emph{V-Mart} work-flow using a two stage \emph{Vickrey} auction model to provision a \emph{VN} in a multi-provider environment in a market-driven manner}
 	\label{fig7}
 \end{figure}
@@ -413,7 +429,7 @@ to consist of only a single \emph{virtual node}.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{colocation}
+	\includegraphics[width=0.6\textwidth]{colocation}
 	\caption{A \emph{V-Let meta-graph} obtained from a traditional request topology by combining nodes belonging to the same equivalence class to \emph{V-Lets} (gray \emph{super-nodes}) based on the
 		\emph{co-location} constraint}
 	\label{fig8}
@@ -437,6 +453,7 @@ examined by the authors, namely
 
 Since both initial partitions neglect link costs and in particular \emph{inter-domain} link costs, local improvement iterations are made to further reduce the overall provisioning costs by moving
 \emph{V-Lets} between partitions. In each iteration, a particular \emph{V-Let} $v$ is moved from \emph{InP} $X$ to $Y$ if it produces a positive gain based on the following metric
+
 $$
 	g_{X,Y}(v) = \beta \cdot (\text{decrease in link costs}) - \alpha \cdot (\text{increase in V-Let costs}) = -\left(\beta \cdot (\Delta \text{ link costs}) + \alpha \cdot (\Delta \text{ V-Let costs})\right) 
 $$
